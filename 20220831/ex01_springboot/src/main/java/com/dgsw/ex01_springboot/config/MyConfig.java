@@ -21,8 +21,6 @@ public class MyConfig {
         return  new C();
     }
 
-
-
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource ds = new DriverManagerDataSource();
