@@ -1,30 +1,27 @@
-<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc -->
+1. db 컨넥션 풀
 <dependency>
 	<groupId>org.apache.tomcat</groupId>
 	<artifactId>tomcat-jdbc</artifactId>
 	<version>10.1.0-M17</version>
 </dependency>
-
-<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+2. jdbcTemplate 사용
 <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-jdbc</artifactId>
 </dependency>
-
-<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+3. mybatis 기본
 <dependency>
 	<groupId>org.mybatis</groupId>
 	<artifactId>mybatis</artifactId>
 	<version>3.5.10</version>
 </dependency>
-<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+4. mybatis spring 연결
 <dependency>
 	<groupId>org.mybatis</groupId>
 	<artifactId>mybatis-spring</artifactId>
 	<version>2.0.7</version>
 </dependency>
-
-<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+5. mysql 데이터 베이스 사용
 <dependency>
 	<groupId>mysql</groupId>
 	<artifactId>mysql-connector-java</artifactId>
