@@ -1,19 +1,41 @@
 package com.aaa.bbb.conf;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.tomcat.jdbc.pool.DataSource;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DBConfig {
 
+    @Autowired
+    ApplicationContext applicationContext;
+
+    @Bean
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
+        SqlSessionFactoryBean ssfb = new SqlSessionFactoryBean();
+        ssfb.setDataSource(datasource());
+        ssfb.setMapperLocations(applicationContext.getResources("classpath:/mapper/*Mapper.xml"));
+        return ssfb.getObject();
+    }
+
+    @Bean
+    public SqlSessionTemplate sqlSessionTemplate() throws Exception {
+        SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory());
+        return sqlSessionTemplate;
+    }
+
     @Bean
     public DataSource datasource() {
         DataSource ds = new DataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost/test?characterEncoding=utf8");
-        ds.setUsername("do1");
-        ds.setPassword("do1");
+        ds.setUrl("jdbc:mysql://localhost:3306/springboot?characterEncoding=utf8");
+        ds.setUsername("root");
+        ds.setPassword("1234");
         ds.setInitialSize(2);
         ds.setMaxActive(10);
         ds.setTestWhileIdle(true);

@@ -20,7 +20,7 @@
 	</properties>
 	<dependencies>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc -->
+		<!-- db connection pool -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jdbc</artifactId>
@@ -52,8 +52,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.30</version>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

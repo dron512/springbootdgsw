@@ -11,6 +11,11 @@
  - 주소설정 ("aa")
 @Autowired
 
+@Data -> setter getter tostring allargconstructor
+@Setter
+@Getter
+@ToString
+@AllArgConstructor
 
 
 
