@@ -16,4 +16,9 @@ public class MainController {
         aCompo.doA();
         return "main";
     }
+
+    @GetMapping("freeboard")
+    public String freeboard(){
+        return "freeboard";
+    }
 }
