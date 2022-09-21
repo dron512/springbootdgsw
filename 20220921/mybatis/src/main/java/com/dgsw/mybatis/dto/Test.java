@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
@@ -16,7 +19,11 @@ public class Test {
 //        this.bb = bb;
 //    }
 
+    @NotEmpty
+    @Length(min = 4)
     private String aa;
+
+    @NotEmpty
     private String bb;
 
 }

@@ -9,6 +9,11 @@
     <h1>findall</h1>
     <div th:replace="common::html-nav">
     </div>
+    <div>
+        <div th:each="test:${testlist}">
+            [[${test}]]
+        </div>
+    </div>
     <div th:replace="common::html-foot">
     </div>
 </div>
