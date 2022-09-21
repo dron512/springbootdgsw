@@ -28,6 +28,7 @@ public class MainController {
     public String freeboard(Model model){
         List list = sqlSessionTemplate.selectList("test.findall");
 
+//        sqlSessionTemplate.insert("test.insert");
 //        sqlSessionTemplate.insert("test.insert")
         System.out.println(list);
         model.addAttribute("list",list);
