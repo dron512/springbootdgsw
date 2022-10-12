@@ -12,7 +12,9 @@
     <form action="/board/delete" method="post">
         <div>
             <div th:each="test:${testlist}">
-                <input type="checkbox" name="idx" th:value="${test.idx}">[[${test}]]
+                <input type="checkbox" name="idx" th:value="${test.idx}">
+                [[${test}]]
+                <a th:href="@{/board/update(idx=${test.idx})}">수정</a>
             </div>
         </div>
         <input type="submit" value="삭제">

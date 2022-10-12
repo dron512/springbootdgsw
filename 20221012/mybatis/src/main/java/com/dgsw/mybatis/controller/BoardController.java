@@ -22,6 +22,21 @@ public class BoardController {
     @Autowired
     SqlSessionTemplate sqlSessionTemplate;
 
+    @GetMapping("update")
+    public String update(int idx, Test test,Model model){
+        System.out.println("idx = "+idx);
+        test = sqlSessionTemplate.selectOne("test.findbyidx",idx);
+        System.out.println(test);
+        model.addAttribute("test",test);
+        return "insert";
+    }
+
+    @PostMapping("update")
+    public String pupdate(Test test){
+        sqlSessionTemplate.update("test.updatetest",test);
+        return "redirect:/board/findall";
+    }
+
     @PostMapping("delete")
     public String delete(int[] idx){
         List<Integer> list = new ArrayList<>();

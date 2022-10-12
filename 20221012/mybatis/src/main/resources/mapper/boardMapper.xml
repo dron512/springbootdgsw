@@ -5,7 +5,13 @@
 
 <mapper namespace="test">
     <select id="findall" resultType="com.dgsw.mybatis.dto.Test">
-        select * from test
+        select idx,aa,bb from test
+    </select>
+
+    <select id="findbyidx"
+            parameterType="int"
+            resultType="com.dgsw.mybatis.dto.Test">
+        select idx,aa,bb from test where idx=#{idx}
     </select>
 
     <insert id="inserttest" parameterType="com.dgsw.mybatis.dto.Test">
@@ -19,4 +25,10 @@
             #{item}
         </foreach>
     </delete>
+
+    <update id="updatetest" parameterType="com.dgsw.mybatis.dto.Test">
+        update test
+            set aa=#{aa}, bb=#{bb}
+        where idx=#{idx}
+    </update>
 </mapper>
