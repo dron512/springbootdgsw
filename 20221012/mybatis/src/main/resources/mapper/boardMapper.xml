@@ -11,4 +11,12 @@
     <insert id="inserttest" parameterType="com.dgsw.mybatis.dto.Test">
         insert into test (aa,bb) values (#{aa},#{bb})
     </insert>
+
+    <delete id="deletetest" parameterType="java.util.List">
+        delete from test
+        where idx in
+        <foreach collection="list" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

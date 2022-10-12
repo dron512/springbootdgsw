@@ -9,11 +9,14 @@
     <h1>findall</h1>
     <div th:replace="common::html-nav">
     </div>
-    <div>
-        <div th:each="test:${testlist}">
-            [[${test}]]
+    <form action="/board/delete" method="post">
+        <div>
+            <div th:each="test:${testlist}">
+                <input type="checkbox" name="idx" th:value="${test.idx}">[[${test}]]
+            </div>
         </div>
-    </div>
+        <input type="submit" value="삭제">
+    </form>
     <div th:replace="common::html-foot">
     </div>
 </div>

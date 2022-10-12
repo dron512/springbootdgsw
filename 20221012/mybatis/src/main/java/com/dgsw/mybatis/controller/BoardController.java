@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,6 +21,23 @@ public class BoardController {
 
     @Autowired
     SqlSessionTemplate sqlSessionTemplate;
+
+    @PostMapping("delete")
+    public String delete(int[] idx){
+        List<Integer> list = new ArrayList<>();
+        if( idx != null){
+            System.out.println("출력시작");
+            for (int i =0 ; i<idx.length ; i++) {
+                System.out.println(idx[i]);
+                list.add(idx[i]);
+            }
+            System.out.println("출력끝");
+        }
+        sqlSessionTemplate.delete("test.deletetest",list);
+
+        System.out.println("delete");
+        return "redirect:/board/findall";
+    }
 
     // select 해서 테이블 내용 뿌려주는거
     @GetMapping("findall")
@@ -33,6 +51,7 @@ public class BoardController {
 
         return "findall";
     }
+
     //insert 해서 테이블에 행 삽입
     @GetMapping("insert")
     public String insert(Test test){
