@@ -23,7 +23,10 @@ public class JoinController {
         List<학생수강> list =
                 sqlSessionTemplate.selectList("join.student");
 
-        System.out.println(list);
+        List<학생수강> list2 =
+                sqlSessionTemplate.selectList("join.subject");
+
+        System.out.println(list2);
 
         model.addAttribute("studentlist",list);
         return "join/main";
