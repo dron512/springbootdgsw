@@ -30,23 +30,23 @@ public class FreeBoardController {
     @GetMapping("list")
     public String freeboard(Model model){
 
-        freeBoardService.regist(
-                FreeBoard.builder()
-                        .id(1L)
-                        .title("제목제목")
-                        .content("내용")
-                        .regdate(LocalDateTime.now().toString())
-                        .build()
-        );
-
-        freeBoardService.regist(
-                FreeBoard.builder()
-                        .id(2L)
-                        .title("123제목123제목")
-                        .content("내용22")
-                        .regdate(LocalDateTime.now().toString())
-                        .build()
-        );
+//        freeBoardService.regist(
+//                FreeBoard.builder()
+//                        .id(1L)
+//                        .title("제목제목")
+//                        .content("내용")
+//                        .regdate(LocalDateTime.now().toString())
+//                        .build()
+//        );
+//
+//        freeBoardService.regist(
+//                FreeBoard.builder()
+//                        .id(2L)
+//                        .title("123제목123제목")
+//                        .content("내용22")
+//                        .regdate(LocalDateTime.now().toString())
+//                        .build()
+//        );
 
         List<FreeBoard> list =
                 freeBoardService.selectlist();
@@ -77,7 +77,7 @@ public class FreeBoardController {
                         .regdate(LocalDateTime.now().toString())
                         .build()
         );
-        return "redirect:/list";
+        return "redirect:/board/list";
     }
 
     @GetMapping("update")
