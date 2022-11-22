@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/mystyle.css" rel="stylesheet">
+    <link href="css/myfont.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/mycookie.js"></script>
+</head>
+
+<body>
+    <div>
+        asdf
+    </div>
+</body>
+
+</html>
+<script>
+    function loginfn() {
+        $.ajax({
+            url: 'http://localhost:8080/member/login',
+            async: true, // false 일 경우 동기 요청으로 변경
+            type: 'post', // POST, GET, PUT
+            data: JSON.stringify({
+                "username": $('#username').val(),
+                "password": $('#password').val(),
+            }),
+            processData: false,
+            dataType: 'text',
+            contentType: 'application/json; charset=utf-8', // text, xml, json, script, html
+            beforeSend: function (res) {}, // 요청하기 전에 호출
+            success: function (res) {
+                console.log('success', res);
+                res = JSON.parse(res);
+                console.log('res', res.token);
+                setCookie('myidtoken', res.token, '60');
+                setCookie('myid', $('#username').val(), '60');
+                console.log(getCookie('myidtoken'));
+                console.log(getCookie('myid'));
+                window.location = 'mypageinfo.html';
+            }, // 요청 완료 시
+            error: function (res, status) {
+                console.log("error", res.responseText.token);
+            }, // 요청 실패 시
+            complete: function (res) {} // 요청 결과 상관 없이 무조건 호출
+        });
+    }
+    $('#login').on('click', function () {
+        loginfn();
+    });
+</script>
