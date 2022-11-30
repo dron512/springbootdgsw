@@ -26,17 +26,12 @@ public class MyUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("UserDetailService");
         log.info("username = "+username);
-//        com.example.demo.entity.User user = userRepository.findByUsername(username);
-//        System.out.println("user "+user);
-//        UserDetails user1 = User.builder()
-//                .username("aa@naver.com")
-//                .password(passwordEncoder.encode("123"))
-//                .roles("USER")
-//                .build();
-//        System.out.println(user1);
+        com.example.demo.entity.User user = userRepository.findByUsername(username);
+        System.out.println("user "+user);
+
         return User.builder()
-                .username("aa@naver.com")
-                .password(passwordEncoder.encode("123"))
+                .username(user.getUsername())
+                .password(user.getPassword())
                 .roles("USER")
                 .build();
     }
