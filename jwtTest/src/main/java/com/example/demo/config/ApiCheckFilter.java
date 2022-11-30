@@ -33,6 +33,7 @@ public class ApiCheckFilter  extends OncePerRequestFilter {
         System.out.println("일단 일로 오나"+patten);
         System.out.println(request.getRequestURI());
         System.out.println(antPathMatcher.match(patten,request.getRequestURI()));
+
         if(antPathMatcher.match(patten,request.getRequestURI())) {
             System.out.println("true");
 

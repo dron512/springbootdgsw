@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.repository.UserRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -17,10 +18,22 @@ public class MyUserDetailService implements UserDetailsService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+
+    @Autowired
+    UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("UserDetailService");
         log.info("username = "+username);
+//        com.example.demo.entity.User user = userRepository.findByUsername(username);
+//        System.out.println("user "+user);
+//        UserDetails user1 = User.builder()
+//                .username("aa@naver.com")
+//                .password(passwordEncoder.encode("123"))
+//                .roles("USER")
+//                .build();
+//        System.out.println(user1);
         return User.builder()
                 .username("aa@naver.com")
                 .password(passwordEncoder.encode("123"))

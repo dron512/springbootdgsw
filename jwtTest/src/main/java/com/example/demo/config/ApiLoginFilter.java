@@ -48,6 +48,7 @@ public class ApiLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
+        System.out.println("successfulAuth");
         response.setContentType("text/plain");
         String email = ((User)authResult.getPrincipal()).getUsername();
 
